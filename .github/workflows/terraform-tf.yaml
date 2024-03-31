@@ -35,8 +35,9 @@ jobs:
 
     # Generates an execution plan for Terraform
     - name: Terraform Plan
-      run: terraform plan -input=false -var-file=project-nazgul.tfvars
+      run: terraform plan 
 
     # Build infrastructure according to Terraform configuration files
-    - name: Terraform Apply
-      run: terraform apply -auto-approve -input=false -var-file=project-nazgul.tfvars
+    - name: Apply Terraform changes
+      if: success() && github.event_name == 'push' && github.ref == 'refs/heads/main'
+      run: terraform apply -auto-approve
