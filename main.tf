@@ -1,9 +1,9 @@
 terraform {
   backend "s3" {
-    bucket         = "tf-state-ecr-nazgul"
+    bucket = "tf-state-ecr-nazgul"
     #dynamodb_table = "state_lock"
-    key            = "tf-ecr"
-    region         = "us-east-1"
+    key    = "tf-ecr"
+    region = "us-east-1"
   }
 }
 
